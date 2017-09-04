@@ -1,0 +1,13 @@
+<html>
+<head>
+  {% if user.username %}
+    <title>{{ user.username }}'s Dashboard</title>
+  {% else %}
+    <title>Post Poster</title>
+  {% endif %}
+</head>
+<body>
+  <h1>Hello, {{ user.username }}</h1>
+  <h2>I am post poster bot.</h2>
+</body>
+</html>
