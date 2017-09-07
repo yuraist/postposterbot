@@ -15,7 +15,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    DEBUG = False
+    DEBUG = True
     SECRET_KEY = os.environ['SECRET_KEY']
     SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
 
