@@ -11,6 +11,7 @@ class Config(object):
     SECURITY_PASSWORD_HASH = 'sha512_crypt'
     SECURITY_PASSWORD_SALT = b'awfke'
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SECURITY_USER_IDENTITY_ATTRIBUTES = ['username']
 
 
 class ProductionConfig(Config):
