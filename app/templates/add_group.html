@@ -1,0 +1,13 @@
+<h3>Добавьте группу</h3>
+<form action="/add_group" method="post" name="add_group">
+  {{ form.hidden_tag() }}
+  <p>ID Сообщества (напр. Адрес - vk.com/postposterbot, ID - postposterbot.</p>
+  {{ form.name() }}
+  <p>App ID</p>
+  {{ form.app_id() }}
+  <p>Secure key</p>
+  {{ form.secure_key() }}
+  <p>Access token</p>
+  {{ form.access_token() }}
+  <input type="submit" value="Добавить">
+</form>

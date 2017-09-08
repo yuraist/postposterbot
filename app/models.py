@@ -1,11 +1,10 @@
 from app import app, db
 from flask_security import SQLAlchemyUserDatastore, UserMixin, RoleMixin, Security
-from app.forms import SignUpForm
 
 
-roles_users = db.Table('roles_users',
-        db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-        db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+roles_users = db.Table('roles_users', db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+                       db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+
 
 class Role(db.Model, RoleMixin):
     id = db.Column(db.Integer(), primary_key=True)
@@ -43,8 +42,28 @@ class Group(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+    def __init__(self, name, app_id, secure_key, access_token):
+        self.name = name
+        self.app_id = app_id
+        self.secure_key = secure_key
+        self.access_token = access_token
+
     def __repr__(self):
         return '<Group {}>'.format(self.name)
+
+
+class Post(db.Model):
+    __tablename__ = 'post'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))
+    url = db.Column(db.String(), unique=True)
+    is_published = db.Column(db.Boolean)
+
+    def __init__(self, title, url):
+        self.title = title
+        self.url = url
+
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)

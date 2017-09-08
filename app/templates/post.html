@@ -1,0 +1,9 @@
+<h1>Опубликовать пост</h1>
+<form action="/post" method="post" name="post">
+  {{ post_form.hidden_tag() }}
+  <p>Заголовок</p>
+  {{ post_form.title }}
+  <p>URL</p>
+  {{ post_form.url }}
+  <input type="submit" value="Publish">
+</form>

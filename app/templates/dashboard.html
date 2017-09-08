@@ -1,1 +1,19 @@
-<h1>Dashboard</h1>
+<div class="dashboard">
+  <h1>Dashboard | {{ current_user.username }}</h1>
+  <div class="add-group">
+    {% include 'add_group.html' %}
+  </div>
+  <div class="group-list">
+    <h3>Список групп</h3>
+    <ol>
+      {% for group in current_user.groups %}
+        <li><p>{{ group.name }}</p></li>
+      {% else %}
+        <p style="color: red">Еще нет групп</p>
+      {% endfor %}
+    </ol>
+  </div>
+  <div class="add-post">
+    {% include 'post.html' %}
+  </div>
+</div>
