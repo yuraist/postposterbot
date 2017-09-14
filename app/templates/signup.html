@@ -7,11 +7,13 @@
   <form action="" method="post" name="signup">
     {{ form.hidden_tag() }}
 
-    Please enter your username:<br>
-    {{ form.username(size=80) }}<br>
+    <label>Логин VK (email или номер телефона):</label>
+    {{ form.username(size=40) }}
+    <br>
 
-    Please enter your password:<br>
-    {{ form.password(size=80) }}<br>
+    <label>Пароль VK:</label>
+    {{ form.password(size=40) }}
+    <br>
 
     <input type="submit" value="Sign Up">
   </form>

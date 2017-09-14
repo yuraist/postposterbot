@@ -35,18 +35,13 @@ class Group(db.Model):
     __tablename__ = 'group'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-    access_token = db.Column(db.String(255))
-    secure_key = db.Column(db.String(128))
-    app_id = db.Column(db.String(64))
+    gid = db.Column(db.String(64))
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, name, app_id, secure_key, access_token):
-        self.name = name
-        self.app_id = app_id
-        self.secure_key = secure_key
-        self.access_token = access_token
+    def __init__(self, gid):
+        self.gid = gid
+
 
     def __repr__(self):
         return '<Group {}>'.format(self.name)
@@ -58,7 +53,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
     url = db.Column(db.String(), unique=True)
-    is_published = db.Column(db.Boolean)
+    is_published = db.Column(db.Boolean, default=False)
 
     def __init__(self, title, url):
         self.title = title

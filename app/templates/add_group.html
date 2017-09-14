@@ -1,13 +1,7 @@
 <h3>Добавьте группу</h3>
 <form action="/add_group" method="post" name="add_group">
   {{ form.hidden_tag() }}
-  <p>ID Сообщества (напр. Адрес - vk.com/postposterbot, ID - postposterbot.</p>
-  {{ form.name() }}
-  <p>App ID</p>
-  {{ form.app_id() }}
-  <p>Secure key</p>
-  {{ form.secure_key() }}
-  <p>Access token</p>
-  {{ form.access_token() }}
+  <p>ID Сообщества (напр. Адрес - vk.com/postposterbot, ID - postposterbot; или для vk.com/club33932608, ID = 33932608)</p>
+  {{ form.gid() }}
   <input type="submit" value="Добавить">
 </form>

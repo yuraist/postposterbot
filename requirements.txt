@@ -22,14 +22,16 @@ Mako==1.0.7
 MarkupSafe==1.0
 passlib==1.7.1
 psycopg2==2.7.3.1
-py-vkontakte==2017.5.8
 python-dateutil==2.6.1
 python-editor==1.0.3
 pytz==2017.2
+redis==2.10.6
 requests==2.18.4
+rq==0.8.2
 six==1.10.0
 speaklater==1.3
 SQLAlchemy==1.1.13
 urllib3==1.22
+vk==2.0.2
 Werkzeug==0.12.2
 WTForms==2.1

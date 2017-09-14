@@ -14,10 +14,8 @@ class SignInForm(FlaskForm):
 
 
 class AddGroupForm(FlaskForm):
-    name = StringField('Group name', validators=[DataRequired()])
-    app_id = StringField('App ID', validators=[DataRequired()])
-    secure_key = StringField('Secure key', validators=[DataRequired()])
-    access_token = StringField('Access token', validators=[DataRequired()])
+    gid = StringField('Group ID', validators=[DataRequired()])
+
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])

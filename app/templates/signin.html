@@ -7,11 +7,13 @@
   <form action="" method="post" name="signin">
     {{ form.hidden_tag() }}
 
-    Please enter your username:<br>
-    {{ form.username(size=80) }}<br>
+    Логин:
+    {{ form.username(size=80) }}
+    <br>
 
-    Please enter your password:<br>
-    {{ form.password(size=80) }}<br>
+    Пароль:
+    {{ form.password(size=80) }}
+    <br>
 
     <input type="submit" value="Login">
   </form>

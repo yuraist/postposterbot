@@ -7,7 +7,7 @@
     <h3>Список групп</h3>
     <ol>
       {% for group in current_user.groups %}
-        <li><p>{{ group.name }}</p></li>
+        <li><p>{{ group.gid }}</p></li>
       {% else %}
         <p style="color: red">Еще нет групп</p>
       {% endfor %}
@@ -15,5 +15,23 @@
   </div>
   <div class="add-post">
     {% include 'post.html' %}
+  </div>
+  <div class="post-list">
+    <table>
+      <tr>
+        <th>Заголовок</th>
+        <th>Ссылка</th>
+      </tr>
+      {% for post in posts %}
+        <tr>
+          <td>{{ post.title }}</td>
+          <td>{{ post.url }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td>Пусто</td>
+        </tr>
+      {% endfor %}
+    </table>
   </div>
 </div>
