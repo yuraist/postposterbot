@@ -44,7 +44,7 @@ class Group(db.Model):
 
 
     def __repr__(self):
-        return '<Group {}>'.format(self.name)
+        return '<Group {}>'.format(self.gid)
 
 
 class Post(db.Model):

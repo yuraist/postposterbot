@@ -26,7 +26,7 @@ class Publisher:
         url = post.url
 
         try:
-            res = self.api.wall.post(owner_id=self.group_id, from_group=1, message=title, attachments=url)
+            self.api.wall.post(owner_id=self.group_id, from_group=1, message=title, attachments=url)
             post.is_published = True
         except Exception as e:
             print(str(e))
@@ -37,12 +37,12 @@ class Publisher:
 
     def post_loop(self):
         while True:
-            print('loop')
-            # posts = Post.query.filter_by(is_published=False).all()
-            # for post in posts:
-            #     self.publish(post)
-            #     # sleep for 30 minutes
-            #     #sleep(60*30)
-            # else:
-            #     #sleep(60*30)
-            #     sleep(2)
+            posts = Post.query.filter_by(is_published=False).all()
+            for post in posts:
+                self.publish(post)
+                # sleep for 30 minutes
+                # sleep(60*30)
+                sleep(60)
+            else:
+                # sleep(60*30)
+                sleep(60)

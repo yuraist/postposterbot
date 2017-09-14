@@ -1,10 +1,19 @@
-from app import app, db
+from app import app, db, q
 from flask import render_template, redirect, g, url_for
 from flask_security import login_user, current_user, logout_user
 from flask_security.utils import hash_password, verify_password
+from rq.job import Job
+
+from worker import conn
 from app.models import User, Group, Post
 from app.forms import SignUpForm, SignInForm, AddGroupForm, PostForm
 from app.publisher import Publisher
+
+
+def start_posting(group):
+    user = User.query.filter_by(id=group.user_id).first()
+    publisher = Publisher(user, group.gid)
+    publisher.post_loop()
 
 
 @app.before_request
@@ -83,7 +92,7 @@ def add_group():
 @app.route('/post', methods=['POST'])
 def post():
     group = Group.query.filter_by(user_id=current_user.id).first()
-    publisher = Publisher(current_user, group.gid)
+    # publisher = Publisher(current_user, group.gid)
 
     form = PostForm()
     if form.validate_on_submit():
@@ -91,8 +100,12 @@ def post():
         url = form.url.data
 
         post = Post(title, url)
-        db.session.add(post)
-        db.session.commit()
 
-        publisher.publish(post)
+        # RUN LOOP
+        job = q.enqueue_call(func=start_posting, args=(group,), result_ttl=5000)
+        print(job.id)
+        # db.session.add(post)
+        # db.session.commit()
+
+        # publisher.publish(post)
     return redirect(url_for('index'))
