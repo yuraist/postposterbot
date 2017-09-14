@@ -82,8 +82,8 @@ def add_group():
 
 @app.route('/post', methods=['POST'])
 def post():
-    # group = Group.query.filter_by(user_id=current_user.id).first()
-    # publisher = Publisher(current_user, group.gid)
+    group = Group.query.filter_by(user_id=current_user.id).first()
+    publisher = Publisher(current_user, group.gid)
 
     form = PostForm()
     if form.validate_on_submit():
@@ -94,5 +94,5 @@ def post():
         db.session.add(post)
         db.session.commit()
 
-        #publisher.publish(post)
+        publisher.publish(post)
     return redirect(url_for('index'))
