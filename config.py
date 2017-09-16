@@ -7,18 +7,17 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'nJA40Kfl9nfds25ufnv12vwn'
+    SECRET_KEY = os.environ['SECRET_KEY']
+    SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
     SECURITY_REGISTERABLE = True
     SECURITY_PASSWORD_HASH = 'sha512_crypt'
-    SECURITY_PASSWORD_SALT = b'awfke'
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SECURITY_USER_IDENTITY_ATTRIBUTES = ['username']
 
 
 class ProductionConfig(Config):
     DEBUG = False
-    SECRET_KEY = os.environ['SECRET_KEY']
-    SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
+
 
 
 class StagingConfig(Config):
