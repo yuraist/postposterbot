@@ -1,19 +1,32 @@
 from app import app, db, q
 from flask import render_template, redirect, g, url_for
 from flask_security import login_user, current_user, logout_user
-from flask_security.utils import hash_password, verify_password
-from rq.job import Job
+from time import sleep
 
-from worker import conn
 from app.models import User, Group, Post
 from app.forms import SignUpForm, SignInForm, AddGroupForm, PostForm
 from app.publisher import Publisher
+from parser import parser
 
 
-def start_posting(group):
-    user = User.query.filter_by(id=group.user_id).first()
-    publisher = Publisher(user, group.gid)
-    publisher.post_loop()
+def parse_post_loop(group):
+    while True:
+        user = User.query.filter_by(id=group.user_id).first()
+        publisher = Publisher(user, group.gid)
+        # publish the last found post
+        publisher.post_last()
+        # search articles
+        parser.parse_all()
+        # pause for 30 minutes
+        sleep(1800)
+
+
+@app.before_first_request
+def run_watching():
+    if current_user.is_authenticated:
+        group = Group.query.filter_by(user_id=current_user.id).first()
+        if group is not None:
+            job = q.enqueue_call(func=parse_post_loop, args=(group,), result_ttl=500)
 
 
 @app.before_request
@@ -66,6 +79,7 @@ def login():
         if password == user.password:
             login_user(user, remember=True)
 
+            run_watching()
             return redirect(url_for('index'))
     return render_template('signin.html', form=form, error=error)
 
@@ -86,24 +100,25 @@ def add_group():
         db.session.add(group)
         db.session.commit()
 
+        run_watching()
+
     return redirect(url_for('index'))
 
 
 @app.route('/post', methods=['POST'])
 def post():
-    group = Group.query.filter_by(user_id=current_user.id).first()
+    # group = Group.query.filter_by(user_id=current_user.id).first()
     # publisher = Publisher(current_user, group.gid)
 
-    form = PostForm()
-    if form.validate_on_submit():
-        title = form.title.data
-        url = form.url.data
+    # form = PostForm()
+    # if form.validate_on_submit():
+    #     title = form.title.data
+    #     url = form.url.data
 
-        post = Post(title, url)
+        # post = Post(title, url)
 
         # RUN LOOP
-        job = q.enqueue_call(func=start_posting, args=(group,), result_ttl=5000)
-        print(job.id)
+
         # db.session.add(post)
         # db.session.commit()
 

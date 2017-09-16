@@ -51,6 +51,7 @@ class Post(db.Model):
     __tablename__ = 'post'
 
     id = db.Column(db.Integer, primary_key=True)
+    source = db.Column(db.String(64))
     title = db.Column(db.String(255))
     url = db.Column(db.String(), unique=True)
     is_published = db.Column(db.Boolean, default=False)

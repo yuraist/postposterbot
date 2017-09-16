@@ -9,6 +9,7 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-q = Queue(connection=conn)
+
+q = Queue('default', connection=conn)
 
 from app import views, models

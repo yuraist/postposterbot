@@ -36,17 +36,18 @@ class Publisher:
             db.session.commit()
 
     def post_loop(self):
-        for i in range(3):
-            post = Post(title='Test post #{}'.format(i), url='http://lalala/{}'.format(i))
-            db.session.add(post)
-            db.session.commit()
-        # while True:
-        #     posts = Post.query.filter_by(is_published=False).all()
-        #     for post in posts:
-        #         self.publish(post)
-        #         # sleep for 30 minutes
-        #         # sleep(60*30)
-        #         sleep(60)
-        #     else:
-        #         # sleep(60*30)
-        #         sleep(60)
+        while True:
+            posts = Post.query.filter_by(is_published=False).all()
+            for post in posts:
+                self.publish(post)
+                # sleep for 30 minutes
+                #sleep(60*30)
+                sleep(60)
+            else:
+                sleep(60*30)
+
+    def post_last(self):
+        posts = Post.query.filter_by(is_published=False).all()
+        if len(posts) > 0:
+            post = posts[0]
+            self.publish(post)
