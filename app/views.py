@@ -10,15 +10,15 @@ from parser import parser
 
 
 def parse_post_loop(group):
+    user = User.query.filter_by(id=group.user_id).first()
+    publisher = Publisher(user, group.gid)
     while True:
-        user = User.query.filter_by(id=group.user_id).first()
-        publisher = Publisher(user, group.gid)
         # publish the last found post
         publisher.post_last()
         # search articles
         parser.parse_all()
         # pause for 30 minutes
-        sleep(1800)
+        sleep(10 * 60)
 
 
 @app.before_first_request
