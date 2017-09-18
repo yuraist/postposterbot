@@ -18,7 +18,7 @@ def parse_post_loop(group):
         # search articles
         parser.parse_all()
         # pause for 30 minutes
-        sleep(10 * 60)
+        sleep(30 * 60)
 
 
 @app.before_first_request
