@@ -26,7 +26,7 @@ def run_watching():
     if current_user.is_authenticated:
         group = Group.query.filter_by(user_id=current_user.id).first()
         if group is not None:
-            job = q.enqueue_call(func=parse_post_loop, args=(group,), result_ttl=500)
+            job = q.enqueue_call(func=parse_post_loop, args=(group,), result_ttl=500, timeout=600000)
 
 
 @app.before_request
