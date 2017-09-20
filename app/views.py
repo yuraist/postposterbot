@@ -40,7 +40,7 @@ def index():
     form = AddGroupForm()
     post_form = PostForm()
     posts = Post.query.filter_by(is_published=False).all()
-    return render_template('index.html', user=current_user, posts=posts, form=form, post_form=post_form)
+    return render_template('index.html')
 
 
 @app.route('/signup', methods=['GET', 'POST'])

@@ -1,0 +1,16 @@
+{% extends 'basic.html' %}
+{% block title %}
+  {% if current_user.username %}
+    {{ current_user.username }} | Dashboard
+  {% else %}
+    Post Poster Bot
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if current_user.is_authenticated %}
+    {% include 'dashboard.html' %}
+  {% else %}
+    {% include 'hello.html' %}
+  {% endif %}
+{% endblock %}
