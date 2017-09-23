@@ -58,7 +58,7 @@ class Post(db.Model):
 
     def __init__(self, title, url):
         self.title = title
-        self.url = url
+        self.url = url;
 
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
