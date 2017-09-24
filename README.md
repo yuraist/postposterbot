@@ -18,6 +18,6 @@ It makes possible to deploy online app very fast.
  + Post publishing and community analytics requires access to group information. Access is via VK API. For quick work with the API
    we user the [vk](https://github.com/dimka665/vk) python library. 
  + Redis Queue is used for async tasks like content searching and post publishing.
- + We user [Heroku](heroku.com) cloud-service for running our application.
+ + We use [Heroku](heroku.com) cloud-service for running our application.
 
 #### [Our website](https://postposterbot.herokuapp.com/) 
