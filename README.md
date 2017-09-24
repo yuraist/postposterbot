@@ -9,7 +9,7 @@ The bot is searching for articles and publish them into the group.
 
 ### Frameworks, libraries and other technologies we use
 
- + In core of the Post Poster Bot is Python-microframework for web application - [Flask](https://github.com/pallets/flask).
+ + In the core of the Post Poster Bot is Python-microframework for web application - [Flask](https://github.com/pallets/flask).
 It makes possible to deploy online app very fast.
  + The [Beautiful Soup 4](https://pypi.python.org/pypi/beautifulsoup4) library helps to parse the data received from websites. 
  + PostgreSQL + [Flask-SQLAlchemy](https://github.com/mitsuhiko/flask-sqlalchemy) is used for data storing and management.
@@ -17,7 +17,7 @@ It makes possible to deploy online app very fast.
 (like user authorization) in our service. We need this funcitonality for our CMS.
  + Post publishing and community analytics requires access to group information. Access is via VK API. For quick work with the API
    we user the [vk](https://github.com/dimka665/vk) python library. 
- + Redis Queue is used for async tasks like content searching and post publishing.
+ + Redis Queue used for async tasks like content searching and post publishing.
  + We use [Heroku](heroku.com) cloud-service for running our application.
 
 #### [Our website](https://postposterbot.herokuapp.com/) 
