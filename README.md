@@ -15,7 +15,7 @@ It makes possible to deploy online app very fast.
  + PostgreSQL + [Flask-SQLAlchemy](https://github.com/mitsuhiko/flask-sqlalchemy) is used for data storing and management.
  + We use the [Flask-Security](https://github.com/mattupstate/flask-security) library to quickly add secure features 
 (like user authorization) in our service. We need this funcitonality for our CMS.
- + Post publishing and community analytics requires access to group information. Access is via VK API. For quick work with the API
+ + Post publishing and community analytics require access to group information. Access is via VK API. For quick work with the API
    we user the [vk](https://github.com/dimka665/vk) python library. 
  + Redis Queue used for async tasks like content searching and post publishing.
  + We use [Heroku](heroku.com) cloud-service for running our application.
