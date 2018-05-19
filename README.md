@@ -1,13 +1,13 @@
 # Post Poster Bot
 
-### About the service
+### About
 
-The content search automation, scheduled publications and analytics service for communities in social media.
-Post Poster is just looking for a content on the websites you choose. Today our service is in development and testing 
-on the iOS developers community ([iOStory](https://vk.com/iostory)).
-The bot is searching for articles and publish them into the group. 
+The Post Poster Bot helps you to automatically search content for your projects, such a Facebook page, or website. It'll also provide scheduled publications and analyzis services for your media. 
 
-### Frameworks, libraries and other technologies we use
+Now Post Poster Bot is only looking for a content on the websites you choose. We're developing and testing it 
+on the mobile developers community ([The Real Talk](https://vk.com/therealtalkme)). The application looks for thematic articles for our community and automatically posts them onto the page.
+
+### What we use
 
  + In the core of the Post Poster Bot is Python-microframework for web application - [Flask](https://github.com/pallets/flask).
 It makes possible to deploy online app very fast.
@@ -20,4 +20,4 @@ It makes possible to deploy online app very fast.
  + Redis Queue used for async tasks like content searching and post publishing.
  + We use [Heroku](heroku.com) cloud-service for running our application.
 
-#### [Our website](https://postposterbot.herokuapp.com/) 
+#### [Our website](https://postposterbot.herokuapp.com/) (Now is unavailable)
