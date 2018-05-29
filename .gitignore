@@ -54,3 +54,4 @@ docs/_build/
 
 *.DS_Store
 setup_current_env.sh
+.env
