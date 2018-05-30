@@ -59,3 +59,4 @@ setup_current_env.sh
 *.csv
 venv
 .idea/workspace.xml
+tmp

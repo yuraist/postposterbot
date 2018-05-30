@@ -94,7 +94,7 @@ class VkHandler:
 
         return groups
 
-    def save_group_and_count_to_file(self, group_id, count, filename='groups.csv'):
+    def save_group_and_count_to_file(self, group_id, count, filename='tmp/groups.csv'):
         """
         Creates a new file or open existing one and save extended group information into it
         :param group_id: – an integer group ID
@@ -133,7 +133,7 @@ class VkHandler:
         groups = self.get_most_similar_groups(group_id)
 
         # Save only the groups when the number of common users is more than 2
-        filtered_groups = {k:v for (k, v) in groups.items() if v > 2}
+        filtered_groups = {k: v for (k, v) in groups.items() if v > 2}
         if not v:
             print(f'Total number of filtered groups is {len(filtered_groups)}')
 
