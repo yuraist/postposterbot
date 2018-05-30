@@ -36,6 +36,8 @@ class Group(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     gid = db.Column(db.String(64))
+    name = db.Column(db.String(128))
+    common_users = db.Column(db.Integer)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 

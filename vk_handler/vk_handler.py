@@ -141,3 +141,32 @@ class VkHandler:
             # Anti-flood
             sleep(0.3)
             self.save_group_and_count_to_file(group_id=id, count=count)
+
+    @staticmethod
+    def save_similar_groups_into_database(filename='tmp/groups.csv'):
+        """
+        Saves the group data from a .csv file into the database.
+        :param filename: – a string name of .csv file with group information
+        """
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
+            groups = list(reader)
+
+            # An array of groups to save into the database
+            group_instances = []
+
+            # Fill the list of groups
+            for group in tqdm(groups[1:]):
+                name = group[0]
+                common = group[1]
+                gid = group[2]
+
+                group_instance = Group(gid=gid)
+                group_instance.name = name
+                group_instance.common_users = common
+
+                group_instances.append(group_instance)
+
+            # Add all into the database
+            db.session.add_all(group_instances)
+            db.session.commit()
