@@ -10,10 +10,9 @@ from app.models import Post
 class Publisher:
 
     def __init__(self, user, group_id):
-
         self.user = user
         self.session = vk.AuthSession(os.environ['APP_ID'], self.user.username, self.user.password,
-                                      scope='wall, photos, offline')
+                                      scope='wall, photos, stats, groups, offline')
         self.api = vk.API(self.session)
 
         try:
@@ -41,7 +40,7 @@ class Publisher:
             for post in posts:
                 self.publish(post)
                 # sleep for 30 minutes
-                #sleep(60*30)
+                # sleep(60*30)
                 sleep(60)
             else:
                 sleep(60*30)
