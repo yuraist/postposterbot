@@ -57,3 +57,4 @@ setup_current_env.sh
 .env
 
 *.csv
+venv
