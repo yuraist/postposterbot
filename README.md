@@ -5,7 +5,7 @@
 The Post Poster Bot helps you to automatically search content for your projects, such a Facebook page, or website. It'll also provide scheduled publications and analyzis services for your media. 
 
 Now Post Poster Bot is only looking for a content on the websites you choose. We're developing and testing it 
-on the mobile developers community ([The Real Talk](https://vk.com/therealtalkme)). The application looks for thematic articles for our community and automatically posts them onto the page.
+on the mobile developers community ([Treedo](https://vk.com/treedo)). The application looks for thematic articles for our community and automatically posts them onto the page.
 
 ### What we use
 
